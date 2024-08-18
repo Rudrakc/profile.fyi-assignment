@@ -1,6 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import AddToCart from "./AddToCart";
+
+
 function ProductCard({ product }) {
   const [imgCount, setImgCount] = useState(0);
 
@@ -18,7 +21,7 @@ function ProductCard({ product }) {
           alt={product.title}
         />
       </div>
-      <div className="flex flex-col w-full items-center">
+      <div className="flex flex-col w-full items-center h-full justify-between">
         <div>
           <h2 className="text-xl font-semibold text-gray-800">
             {product.title}
@@ -31,7 +34,7 @@ function ProductCard({ product }) {
             Rs {product.price.value}
           </p>
         </div>
-        {/* <AddToCart product={product} /> */}
+        <AddToCart product={product} />
       </div>
     </div>
   );
