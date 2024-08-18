@@ -2,13 +2,18 @@ import { create } from "zustand";
 
 // Helper function to load cart from local storage
 const loadCartFromLocalStorage = () => {
-  const storedCart = localStorage.getItem("cart");
-  return storedCart ? JSON.parse(storedCart) : {};
+  if (typeof window !== "undefined") {
+    const storedCart = localStorage.getItem("cart");
+    return storedCart ? JSON.parse(storedCart) : {};
+  }
+  return {};
 };
 
 // Helper function to save cart to local storage
 const saveCartToLocalStorage = (cart) => {
-  localStorage.setItem("cart", JSON.stringify(cart));
+  if (typeof window !== "undefined") {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }
 };
 
 const useCartStore = create((set) => ({
